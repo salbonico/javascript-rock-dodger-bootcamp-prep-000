@@ -1,5 +1,5 @@
 /**
- * Don't change these constants!
+ * Don't change these constants! Github test!
  */
 const DODGER = document.getElementById('dodger')
 const GAME = document.getElementById('game')
@@ -9,7 +9,7 @@ const LEFT_ARROW = 37 // use e.which!
 const RIGHT_ARROW = 39 // use e.which!
 const ROCKS = []
 const START = document.getElementById('start')
-   
+
 var gameInterval = null
 var bugFix = 0
 /**
@@ -37,11 +37,11 @@ function checkCollision(rock) {
     const rockRightEdge = rockLeftEdge + 20;
 
     if (rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge){return true}
-    
+
      if (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) {return true}
-    
-    if (rockLeftEdge<dodgerRightEdge && rockRightEdge > dodgerRightEdge) {return true} 
-    
+
+    if (rockLeftEdge<dodgerRightEdge && rockRightEdge > dodgerRightEdge) {return true}
+
     /**
                * Think about it -- what's happening here?
                * There's been a collision if one of three things is true:
@@ -51,11 +51,11 @@ function checkCollision(rock) {
                *    and the rock's right edge is < the DODGER's right edge;
                * 3. The rock's left edge is < the DODGER's right edge,
                *    and the rock's right edge is > the DODGER's right edge
-               */ 
-     
-    
+               */
+
+
   }return false
-  
+
 }
 
 function createRock(x) {
@@ -86,7 +86,7 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-   
+
     /**
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
@@ -94,21 +94,21 @@ function createRock(x) {
      function step(){
        rock.style.top = `${top += 2}px`
        if (checkCollision(rock)){
-         
+
          if (bugFix===0){alert("YOU LOSE!"); bugFix = 1}
          endGame()}
        if (top < 400){
          window.requestAnimationFrame(step)
        } if (top === 399){rock.remove()}
      }
-    
+
      window.requestAnimationFrame(step)
-  
+
     /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM
      */
-     
+
   }
 
   // We should kick of the animation of the rock around here
@@ -135,7 +135,7 @@ function removeRocks(rkaray){
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
-  clearInterval(gameInterval) 
+  clearInterval(gameInterval)
   removeRocks(ROCKS)
   window.removeEventListener('keydown', moveDodger)
   //alert("YOU LOSE!")
@@ -151,7 +151,7 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-   
+
    if(e.which == LEFT_ARROW){
      e.preventDefault()
      e.stopPropagation()
@@ -171,11 +171,11 @@ function moveDodgerLeft() {
    */
    var leftNumbers = dodger.style.left.replace('px', '')
    var left = parseInt(leftNumbers, 10)
- 
+
  if (left > 0){
     dodger.style.left = `${left - 4}px`}
-   
-   
+
+
 }
 
 function moveDodgerRight() {
@@ -186,11 +186,11 @@ function moveDodgerRight() {
    */
     var leftNumbers = dodger.style.left.replace('px', '')
    var left = parseInt(leftNumbers, 10)
- 
+
  if (left < 360){
     dodger.style.left = `${left + 4}px`}
-   
-   
+
+
 }
 
 /**
@@ -205,7 +205,7 @@ function start() {
   window.addEventListener('keydown', moveDodger)
 
   START.style.display = 'none'
-  bugFix = 0 
+  bugFix = 0
   gameInterval = setInterval(function() {
     createRock(Math.floor(Math.random() *  (GAME_WIDTH - 20)))
   }, 1000)
